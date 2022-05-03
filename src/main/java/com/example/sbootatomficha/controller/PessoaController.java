@@ -14,11 +14,7 @@ public class PessoaController {
 
     @GetMapping
     public List<Pessoa> listar(){
-        List<Pessoa> pessoas = new ArrayList<>();
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNome("Willen");
-        pessoa.setCpf("049.244.564-89");
-        pessoas.add(pessoa);
+        List<Pessoa> pessoas = List.of(new Pessoa("Antonio","123.456.789-00"));
         return pessoas;
     }
 
