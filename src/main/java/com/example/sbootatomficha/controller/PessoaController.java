@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("${spring.application.name}/api/pessoas")
+@RequestMapping("/api/pessoas")
 public class PessoaController {
 
     @GetMapping(path = "/keycloak")

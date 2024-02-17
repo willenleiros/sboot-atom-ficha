@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("${spring.application.name}/api/fichas")
+@RequestMapping("/api/fichas")
 public class FichaController {
 
     private List<Ficha> fichas;

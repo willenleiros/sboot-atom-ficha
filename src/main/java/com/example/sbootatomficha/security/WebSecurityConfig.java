@@ -28,8 +28,8 @@ public class WebSecurityConfig {
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers(HttpMethod.POST,"/actuator/refresh").permitAll()
                 .requestMatchers("/actuator/health").hasRole(ADMIN)
-                .requestMatchers("/atom-ficha/api/fichas").hasRole(USER)
-                .requestMatchers("/atom-ficha/api/pessoas").hasRole(ADMIN)
+                .requestMatchers("/api/fichas/**").hasRole(USER)
+                .requestMatchers("/api/pessoas/**").hasRole(ADMIN)
                 .anyRequest().denyAll());
 
         http.oauth2ResourceServer(oauth2 -> oauth2
