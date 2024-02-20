@@ -28,9 +28,11 @@ public class WebSecurityConfig {
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers(HttpMethod.POST,"/actuator/refresh").permitAll()
                 .requestMatchers("/actuator/health").hasRole(ADMIN)
-                .requestMatchers("/api/fichas/**").hasRole(USER)
-                .requestMatchers("/api/pessoas/**").hasRole(ADMIN)
-                .anyRequest().denyAll());
+                .requestMatchers("/atom-ficha/api/fichas").hasRole(USER)
+                .requestMatchers("/atom-ficha/api/pessoas").hasRole(ADMIN)
+//                .requestMatchers(RegexRequestMatcher
+//                        .regexMatcher("/resource/[A-Za-z0-9]+")).hasRole("USER")
+                .anyRequest().authenticated());
 
         http.oauth2ResourceServer(oauth2 -> oauth2
                 .jwt(jwt -> jwt

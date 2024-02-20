@@ -2,6 +2,8 @@ package com.example.sbootatomficha.controller;
 
 import com.example.sbootatomficha.domain.Ficha;
 import com.example.sbootatomficha.domain.Pessoa;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/fichas")
 public class FichaController {
+
+    private Logger logger = LoggerFactory.getLogger(FichaController.class);
 
     private List<Ficha> fichas;
 
@@ -27,13 +31,11 @@ public class FichaController {
     }
 
     @PostMapping
-    public ResponseEntity credenciar(@RequestBody Ficha fc){
+    public ResponseEntity<List<Ficha>> credenciar(@RequestBody Ficha fc){
         List<Ficha> fichas =  this.fichas.stream().filter(ficha ->
             ficha.getCodigo().equals(fc.getCodigo())).collect(Collectors.toList());
-        if(fichas.size() > 0)
-            return ResponseEntity.ok(true);
-        else
-            return ResponseEntity.ok(false);
+        this.logger.info("ficha {}",fichas);
+        return ResponseEntity.ok(fichas);
     }
 
 }
